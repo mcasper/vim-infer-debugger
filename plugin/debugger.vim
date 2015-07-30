@@ -9,17 +9,17 @@ endif
 
 function! Debugging(direction)
   let file = split(expand("%"), "/")[-1]
+  let uncalled = 1
 
   for array in g:debugger_array
     if file =~ array[0]
       execute "normal!" a:direction array[1]
-      let called = 1
+      let uncalled = 0
     else
     endif
   endfor
 
-  if called
-  else
+  if uncalled
     normal! o Couldn't figure out the debugger type, please add an entry for this file extension
   endif
 endfunction
