@@ -1,29 +1,26 @@
+if !exists("g:debugger_array")
+  let g:debugger_array = [["\.rb", "require 'pry'; binding.pry"],
+                         \["\.ex", "require IEx; IEx.pry"],
+                         \["\.erb", "<% require 'pry'; binding.pry %>"],
+                         \["\.eex", "<%= require IEx; IEx.pry %>"],
+                         \["\.json\.jbuilder", "require 'pry'; binding.pry"],
+                         \["\.js$", "debugger;"]]
+endif
+
 function! Debugging(direction)
-  let file_path = expand('%')
-  let file = split(file_path, "/")[-1]
-  let rb   = file =~ "\.rb"
-  let ex   = file =~ "\.ex"
-  let erb  = file =~ "\.erb"
-  let eex  = file =~ "\.eex"
-  let json = file =~ "\.json\.jbuilder"
-  let js   = file =~ "\.js"
+  let file = split(expand("%"), "/")[-1]
 
-  let @g = a:direction
+  for array in g:debugger_array
+    if file =~ array[0]
+      execute "normal!" a:direction array[1]
+      let called = 1
+    else
+    endif
+  endfor
 
-  if rb
-    normal! @grequire "pry"; binding.pry
-  elseif ex
-    normal! @grequire IEx; IEx.pry
-  elseif erb
-    normal! @g<% require "pry"; binding.pry %>
-  elseif eex
-    normal! @g<%= require IEx; IEx.pry %>
-  elseif json
-    normal! @grequire "pry"; binding.pry
-  elseif js
-    normal! @gdebugger;
+  if called
   else
-    normal! @gCouldn't figure out the debugger type, add support for this file extension
+    normal! o Couldn't figure out the debugger type, please add an entry for this file extension
   endif
 endfunction
 
