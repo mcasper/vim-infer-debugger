@@ -16,7 +16,6 @@ function! Debugging(direction)
     if file =~ array[0]
       execute "normal!" a:direction array[1]
       let uncalled = 0
-    else
     endif
   endfor
 
