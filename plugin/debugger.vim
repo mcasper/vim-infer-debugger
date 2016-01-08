@@ -4,8 +4,10 @@ if !exists("g:debugger_array")
                          \['\.exs', 'require IEx; IEx.pry'],
                          \['\.erb', '<% require "pry"; binding.pry %>'],
                          \['\.eex', '<%= require IEx; IEx.pry %>'],
+                         \['\.coffee$', 'debugger'],
                          \['\.json\.jbuilder', 'require "pry"; binding.pry'],
-                         \['\.js$', 'debugger;']]
+                         \['\.js$', 'debugger;'],
+                         \['\.jsx$', 'debugger;']]
 endif
 
 function! Debugging(direction)
