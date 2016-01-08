@@ -1,13 +1,14 @@
 if !exists("g:debugger_array")
-  let g:debugger_array = [['\.rb', 'require "pry"; binding.pry'],
-                         \['\.ex$', 'require IEx; IEx.pry'],
-                         \['\.exs', 'require IEx; IEx.pry'],
-                         \['\.erb', '<% require "pry"; binding.pry %>'],
-                         \['\.eex', '<%= require IEx; IEx.pry %>'],
-                         \['\.coffee$', 'debugger'],
-                         \['\.json\.jbuilder', 'require "pry"; binding.pry'],
-                         \['\.js$', 'debugger;'],
-                         \['\.jsx$', 'debugger;']]
+ l let g:debugger_array = [['\.rb',             'require "pry"; binding.pry'],
+                          \['\.ex$',            'require IEx; IEx.pry'],
+                          \['\.exs',            'require IEx; IEx.pry'],
+                          \['\.erb',            '<% require "pry"; binding.pry %>'],
+                          \['\.eex',            '<%= require IEx; IEx.pry %>'],
+                          \['\.coffee$',        'debugger'],
+                          \['\.json\.jbuilder', 'require "pry"; binding.pry'],
+                          \['\.js$',            'debugger;'],
+                          \['\.jsx$',           'debugger;']
+                          \['\.rs$',            'println!("{:?}", );']]
 endif
 
 function! Debugging(direction)
