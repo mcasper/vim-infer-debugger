@@ -11,8 +11,10 @@ you're in. It comes with a set of defaults (currently centered around Ruby/Rails
                          \['\.exs', 'require IEx; IEx.pry'],
                          \['\.erb', '<% require "pry"; binding.pry %>'],
                          \['\.eex', '<%= require IEx; IEx.pry %>'],
+                         \['\.coffee$', 'debugger'],
                          \['\.json\.jbuilder', 'require "pry"; binding.pry'],
-                         \['\.js$', 'debugger;']]
+                         \['\.js$', 'debugger;'],
+                         \['\.jsx$', 'debugger;']]
 ```
 In order to define your own debuggers, just overwrite `g:debugger_array` in your `.vimrc`
 Please note that when defining the regex for the file extension, it is best to wrap it
