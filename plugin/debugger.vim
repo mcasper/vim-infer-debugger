@@ -1,5 +1,5 @@
 if !exists("g:debugger_array")
- l let g:debugger_array = [['\.rb',             'require "pry"; binding.pry'],
+ let g:debugger_array = [['\.rb',             'require "pry"; binding.pry'],
                           \['\.ex$',            'require IEx; IEx.pry'],
                           \['\.exs',            'require IEx; IEx.pry'],
                           \['\.erb',            '<% require "pry"; binding.pry %>'],
@@ -7,7 +7,7 @@ if !exists("g:debugger_array")
                           \['\.coffee$',        'debugger'],
                           \['\.json\.jbuilder', 'require "pry"; binding.pry'],
                           \['\.js$',            'debugger;'],
-                          \['\.jsx$',           'debugger;']
+                          \['\.jsx$',           'debugger;'],
                           \['\.rs$',            'println!("{:?}", );']]
 endif
 
