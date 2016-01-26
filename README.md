@@ -28,24 +28,22 @@ it is best to wrap it in single quotes. Also note that by setting
 want to only change one of the default entries, you will have to supply the
 rest of them as well.
 
-`vim-infer-debugger` defines three key mappings by default:
-
-```VIM
-nmap <Leader>P :call AddDebugger("O")<cr>
-nmap <Leader>p :call AddDebugger("o")<cr>
-nmap <Leader>d :call RemoveAllDebuggers()<cr>
-```
-
 ## Configuration
 
-If you wish to remap any of the default mappings, just follow the syntax above
-and assign the appropriate functions to the key binding you would like.
-Furthermore, the following functions are exposed for your use.
+`vim-infer-debugger` exposes the following functions for your use.
 
 ```VIM
 AddDebugger("O")
 AddDebugger("o")
 RemoveAllDebuggers()
+```
+
+It is recommended that you map them in your `.vimrc`, for example:
+
+```VIM
+nmap <Leader>P :call AddDebugger("O")<cr>
+nmap <Leader>p :call AddDebugger("o")<cr>
+nmap <Leader>d :call RemoveAllDebuggers()<cr>
 ```
 
 ## Installation
