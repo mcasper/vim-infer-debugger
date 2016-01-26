@@ -21,9 +21,6 @@ function! AddDebugger(direction)
   endif
 endfunction
 
-nmap <Leader>P :call AddDebugger("O")<cr>
-nmap <Leader>p :call AddDebugger("o")<cr>
-
 function! RemoveAllDebuggers()
   let debugger_array = FindDebuggerArray()
 
@@ -34,8 +31,6 @@ function! RemoveAllDebuggers()
     echo NoDebuggerFoundError()
   end
 endfunction
-
-nmap <Leader>d :call RemoveAllDebuggers()<cr>
 
 function! FindDebuggerArray()
   let file_extension = split(expand("%"), "/")[-1]
