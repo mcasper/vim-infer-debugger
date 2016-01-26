@@ -38,7 +38,7 @@ AddDebugger("o")
 RemoveAllDebuggers()
 ```
 
-It is recommended that you map them in your '.vimrc', for example:
+It is recommended that you map them in your `.vimrc`, for example:
 
 ```VIM
 nmap <Leader>P :call AddDebugger("O")<cr>
