@@ -10,6 +10,7 @@ file you're in. It comes with a set of defaults:
 
 ```VIM
   let g:debugger_array = [['\.rb',             'require "pry"; binding.pry'],
+                         \['\.rake',           'require "pry"; binding.pry'],
                          \['\.ex$',            'require IEx; IEx.pry'],
                          \['\.exs',            'require IEx; IEx.pry'],
                          \['\.erb',            '<% require "pry"; binding.pry %>'],
