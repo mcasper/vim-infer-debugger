@@ -1,5 +1,6 @@
 if !exists("g:debugger_array")
  let g:debugger_array = [['\.rb',             'require "pry"; binding.pry'],
+                        \['\.rake',           'require "pry"; binding.pry'],
                         \['\.ex$',            'require IEx; IEx.pry'],
                         \['\.exs',            'require IEx; IEx.pry'],
                         \['\.erb',            '<% require "pry"; binding.pry %>'],
