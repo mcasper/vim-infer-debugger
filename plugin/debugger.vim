@@ -16,7 +16,7 @@ function! AddDebugger(direction)
   let debugger_array = FindDebuggerArray()
 
   if debugger_array != []
-    execute "normal!" a:direction debugger_array[1]
+    execute "normal!" a:direction.debugger_array[1]
   else
     echo NoDebuggerFoundError()
   endif
