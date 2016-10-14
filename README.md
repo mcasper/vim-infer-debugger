@@ -14,6 +14,7 @@ file you're in. It comes with a set of defaults:
                          \['\.ex$',            'require IEx; IEx.pry'],
                          \['\.exs',            'require IEx; IEx.pry'],
                          \['\.erb',            '<% require "pry"; binding.pry %>'],
+                         \['\.haml',           '- require "pry"; binding.pry'],
                          \['\.eex',            '<% require IEx; IEx.pry %>'],
                          \['\.coffee$',        'debugger'],
                          \['\.json\.jbuilder', 'require "pry"; binding.pry'],
