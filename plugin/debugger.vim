@@ -10,7 +10,8 @@ if !exists("g:debugger_array")
                         \['\.json\.jbuilder', 'require "pry"; binding.pry'],
                         \['\.js$',            'debugger;'],
                         \['\.jsx$',           'debugger;'],
-                        \['\.rs$',            'println!("{:?}", );']]
+                        \['\.rs$',            'println!("{:?}", );'],
+                        \['\.py$',            'import pdb; pdb.set_trace()']]
 endif
 
 function! AddDebugger(direction)
