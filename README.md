@@ -19,8 +19,9 @@ file you're in. It comes with a set of defaults:
                          \['\.coffee$',        'debugger'],
                          \['\.json\.jbuilder', 'require "pry"; binding.pry'],
                          \['\.js$',            'debugger;'],
-                         \['\.jsx$',           'debugger;']
-                         \['\.rs$',            'println!("{:?}", )']]
+                         \['\.jsx$',           'debugger;'],
+                         \['\.rs$',            'println!("{:?}", )'],
+                         \['\.py$',            'import pdb; pdb.set_trace()']]
 ```
 
 In order to define your own debuggers, just overwrite `g:debugger_array` in
