@@ -26,12 +26,12 @@ file you're in. It comes with a set of defaults:
         \ }
 ```
 
-In order to define your own debuggers, just overwrite `g:debugger_dictionary` in
-your `.vimrc` Please note that when defining the regex for the file extension,
-it is best to wrap it in single quotes. Also note that by setting
-`g:debugger_dictionary` in your `.vimrc`, you overwrite the entire dictionary. So if you
-want to only change one of the default entries, you will have to supply the
-rest of them as well.
+In order to add your own debuggers, define `g:user_debugger_dictionary` in your `.vimrc`. Your settings will be added to the predefined list, or overwrite existing entries. Please note that when defining the regex for the file extension, it is best to wrap it in single quotes. For example, if you wanted to use byebug instead of pry for Ruby files, you could add the following to your configuration file:
+```VIM
+let g:user_debugger_dictionary = {
+      \ '\.rb': 'byebug',
+      \ }
+```
 
 ## Configuration
 

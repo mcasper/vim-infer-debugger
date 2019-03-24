@@ -1,19 +1,21 @@
-if !exists("g:debugger_dictionary")
-  let g:debugger_dictionary = {
-        \ '\.rb':             'require "pry"; binding.pry',
-        \ '\.rake':           'require "pry"; binding.pry',
-        \ '\.ex$':            'require IEx; IEx.pry',
-        \ '\.exs':            'require IEx; IEx.pry',
-        \ '\.erb':            '<% require "pry"; binding.pry %>',
-        \ '\.haml':           '- require "pry"; binding.pry',
-        \ '\.eex':            '<%= require IEx; IEx.pry %>',
-        \ '\.coffee$':        'debugger',
-        \ '\.json\.jbuilder': 'require "pry"; binding.pry',
-        \ '\.js$':            'debugger;',
-        \ '\.jsx$':           'debugger;',
-        \ '\.rs$':            'println!("{:?}", );',
-        \ '\.py$':            'import pdb; pdb.set_trace()',
-        \ }
+let g:debugger_dictionary = {
+      \ '\.rb':             'require "pry"; binding.pry',
+      \ '\.rake':           'require "pry"; binding.pry',
+      \ '\.ex$':            'require IEx; IEx.pry',
+      \ '\.exs':            'require IEx; IEx.pry',
+      \ '\.erb':            '<% require "pry"; binding.pry %>',
+      \ '\.haml':           '- require "pry"; binding.pry',
+      \ '\.eex':            '<%= require IEx; IEx.pry %>',
+      \ '\.coffee$':        'debugger',
+      \ '\.json\.jbuilder': 'require "pry"; binding.pry',
+      \ '\.js$':            'debugger;',
+      \ '\.jsx$':           'debugger;',
+      \ '\.rs$':            'println!("{:?}", );',
+      \ '\.py$':            'import pdb; pdb.set_trace()',
+      \ }
+
+if exists("g:user_debugger_dictionary")
+  call extend(g:debugger_dictionary, g:user_debugger_dictionary, "force")
 endif
 
 function! AddDebugger(direction)
