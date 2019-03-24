@@ -9,25 +9,27 @@ corresponding debuggers, and then selects the correct debugger based on the
 file you're in. It comes with a set of defaults:
 
 ```VIM
-  let g:debugger_array = [['\.rb',             'require "pry"; binding.pry'],
-                         \['\.rake',           'require "pry"; binding.pry'],
-                         \['\.ex$',            'require IEx; IEx.pry'],
-                         \['\.exs',            'require IEx; IEx.pry'],
-                         \['\.erb',            '<% require "pry"; binding.pry %>'],
-                         \['\.haml',           '- require "pry"; binding.pry'],
-                         \['\.eex',            '<% require IEx; IEx.pry %>'],
-                         \['\.coffee$',        'debugger'],
-                         \['\.json\.jbuilder', 'require "pry"; binding.pry'],
-                         \['\.js$',            'debugger;'],
-                         \['\.jsx$',           'debugger;'],
-                         \['\.rs$',            'println!("{:?}", )'],
-                         \['\.py$',            'import pdb; pdb.set_trace()']]
+  let g:debugger_dictionary = {
+        \ '\.rb':             'require "pry"; binding.pry',
+        \ '\.rake':           'require "pry"; binding.pry',
+        \ '\.ex$':            'require IEx; IEx.pry',
+        \ '\.exs':            'require IEx; IEx.pry',
+        \ '\.erb':            '<% require "pry"; binding.pry %>',
+        \ '\.haml':           '- require "pry"; binding.pry',
+        \ '\.eex':            '<%= require IEx; IEx.pry %>',
+        \ '\.coffee$':        'debugger',
+        \ '\.json\.jbuilder': 'require "pry"; binding.pry',
+        \ '\.js$':            'debugger;',
+        \ '\.jsx$':           'debugger;',
+        \ '\.rs$':            'println!("{:?}", );',
+        \ '\.py$':            'import pdb; pdb.set_trace()',
+        \ }
 ```
 
-In order to define your own debuggers, just overwrite `g:debugger_array` in
+In order to define your own debuggers, just overwrite `g:debugger_dictionary` in
 your `.vimrc` Please note that when defining the regex for the file extension,
 it is best to wrap it in single quotes. Also note that by setting
-`g:debugger_array` in your `.vimrc`, you overwrite the entire array. So if you
+`g:debugger_dictionary` in your `.vimrc`, you overwrite the entire dictionary. So if you
 want to only change one of the default entries, you will have to supply the
 rest of them as well.
 
