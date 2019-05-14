@@ -1,50 +1,54 @@
-if !exists("g:debugger_array")
- let g:debugger_array = [['\.rb',             'require "pry"; binding.pry'],
-                        \['\.rake',           'require "pry"; binding.pry'],
-                        \['\.ex$',            'require IEx; IEx.pry'],
-                        \['\.exs',            'require IEx; IEx.pry'],
-                        \['\.erb',            '<% require "pry"; binding.pry %>'],
-                        \['\.haml',           '- require "pry"; binding.pry'],
-                        \['\.eex',            '<%= require IEx; IEx.pry %>'],
-                        \['\.coffee$',        'debugger'],
-                        \['\.json\.jbuilder', 'require "pry"; binding.pry'],
-                        \['\.js$',            'debugger;'],
-                        \['\.jsx$',           'debugger;'],
-                        \['\.rs$',            'println!("{:?}", );'],
-                        \['\.py$',            'import pdb; pdb.set_trace()']]
+let g:debugger_dictionary = {
+      \ '\.rb':             'require "pry"; binding.pry',
+      \ '\.rake':           'require "pry"; binding.pry',
+      \ '\.ex$':            'require IEx; IEx.pry',
+      \ '\.exs':            'require IEx; IEx.pry',
+      \ '\.erb':            '<% require "pry"; binding.pry %>',
+      \ '\.haml':           '- require "pry"; binding.pry',
+      \ '\.eex':            '<%= require IEx; IEx.pry %>',
+      \ '\.coffee$':        'debugger',
+      \ '\.json\.jbuilder': 'require "pry"; binding.pry',
+      \ '\.js$':            'debugger;',
+      \ '\.jsx$':           'debugger;',
+      \ '\.rs$':            'println!("{:?}", );',
+      \ '\.py$':            'import pdb; pdb.set_trace()',
+      \ }
+
+if exists("g:user_debugger_dictionary")
+  call extend(g:debugger_dictionary, g:user_debugger_dictionary, "force")
 endif
 
 function! AddDebugger(direction)
-  let debugger_array = FindDebuggerArray()
+  let debugger_statement = FindDebuggerStatement()
 
-  if debugger_array != []
-    execute "normal!" a:direction.debugger_array[1]
+  if debugger_statement != ""
+    execute "normal!" a:direction.debugger_statement
   else
     echo NoDebuggerFoundError()
   endif
 endfunction
 
 function! RemoveAllDebuggers()
-  let debugger_array = FindDebuggerArray()
+  let debugger_statement = FindDebuggerStatement()
 
-  if debugger_array != []
-    let command = join(["g/", debugger_array[1], "/d"], "")
+  if debugger_statement != ""
+    let command = join(["g/", debugger_statement, "/d"], "")
     execute command
   else
     echo NoDebuggerFoundError()
   end
 endfunction
 
-function! FindDebuggerArray()
-  let file_extension = split(expand("%"), "/")[-1]
+function! FindDebuggerStatement()
+  let current_file_extension = split(expand("%"), "/")[-1]
 
-  for array in g:debugger_array
-    if file_extension =~ array[0]
-      return array
+  for file_extension in keys(g:debugger_dictionary)
+    if current_file_extension =~ file_extension
+      return g:debugger_dictionary[file_extension]
     endif
   endfor
 
-  return []
+  return ""
 endfunction
 
 function! NoDebuggerFoundError()
